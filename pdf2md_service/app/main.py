@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.core.config import settings
+from app.api.endpoints import router as conversion_router
 
 
 def create_application() -> FastAPI:
@@ -16,9 +17,8 @@ def create_application() -> FastAPI:
         redoc_url="/api/v1/redoc",
     )
 
-    # Include routers here in Phase 2
-    # from app.api.routes import router as api_router
-    # application.include_router(api_router, prefix="/api/v1")
+    # Include API routers
+    application.include_router(conversion_router)
 
     return application
 
